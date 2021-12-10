@@ -14,13 +14,26 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int count = 0;
+
   void decrement() {
-    print('Decremente');
+    setState(() {
+      count--;
+    });
+    print(count);
   }
 
   void increment() {
-    print('Incremente');
+    setState(() {
+      count++;
+    });
+    print(count);
   }
 
   @override
@@ -48,7 +61,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(32.0),
               child: Text(
-                '0',
+                count.toString(),
                 style: TextStyle(
                   fontSize: 80,
                   color: Colors.white,
